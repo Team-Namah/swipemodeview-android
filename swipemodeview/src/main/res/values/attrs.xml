@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SwipeModeView">
+        <attr name="leftModeColor" format="color"/>
+        <attr name="rightModeColor" format="color"/>
+        <attr name="centerTextColor" format="color"/>
+    </declare-styleable>
+</resources>
