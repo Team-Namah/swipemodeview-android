@@ -4,5 +4,6 @@
         <attr name="leftModeColor" format="color"/>
         <attr name="rightModeColor" format="color"/>
         <attr name="centerTextColor" format="color"/>
+        <attr name="hapticsEnabled" format="boolean"/>
     </declare-styleable>
 </resources>

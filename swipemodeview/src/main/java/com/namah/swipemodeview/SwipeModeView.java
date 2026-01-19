@@ -6,6 +6,7 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -42,6 +43,7 @@ public class SwipeModeView extends FrameLayout {
     private int leftColor;
     private int rightColor;
     private int textColor;
+    private boolean hapticsEnabled = true;
 
     public SwipeModeView(Context context) {
         super(context);
@@ -63,16 +65,37 @@ public class SwipeModeView extends FrameLayout {
 
         marginPx = dp(5);
 
+        // Default values
         leftColor = Color.BLACK;
         rightColor = Color.parseColor("#F97316");
         textColor = Color.BLACK;
+        hapticsEnabled = true;
 
         if (attrs != null) {
-            TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.SwipeModeView);
+            TypedArray ta = getContext().obtainStyledAttributes(
+                    attrs,
+                    R.styleable.SwipeModeView
+            );
 
-            leftColor = ta.getColor(R.styleable.SwipeModeView_leftModeColor, leftColor);
-            rightColor = ta.getColor(R.styleable.SwipeModeView_rightModeColor, rightColor);
-            textColor = ta.getColor(R.styleable.SwipeModeView_centerTextColor, textColor);
+            leftColor = ta.getColor(
+                    R.styleable.SwipeModeView_leftModeColor,
+                    leftColor
+            );
+
+            rightColor = ta.getColor(
+                    R.styleable.SwipeModeView_rightModeColor,
+                    rightColor
+            );
+
+            textColor = ta.getColor(
+                    R.styleable.SwipeModeView_centerTextColor,
+                    textColor
+            );
+
+            hapticsEnabled = ta.getBoolean(
+                    R.styleable.SwipeModeView_hapticsEnabled,
+                    true
+            );
 
             ta.recycle();
         }
@@ -80,7 +103,10 @@ public class SwipeModeView extends FrameLayout {
         centerText.setTextColor(textColor);
 
         setupTouch();
-        applyMode(false);
+
+        if (isInEditMode()) {
+            post(() -> applyMode(false));
+        }
     }
 
     private void setupTouch() {
@@ -114,22 +140,32 @@ public class SwipeModeView extends FrameLayout {
     }
 
     private void applyMode(boolean animate) {
+        if (track.getWidth() == 0) return;
+
         float targetX = currentMode == Mode.RIGHT
                 ? track.getWidth() - thumb.getWidth() - marginPx
                 : marginPx;
 
         if (animate) {
-            thumb.animate().x(targetX).setDuration(200).start();
+            ValueAnimator animator = ValueAnimator.ofFloat(thumb.getX(), targetX);
+            animator.setDuration(220);
+            animator.addUpdateListener(a ->
+                    thumb.setX((Float) a.getAnimatedValue()));
+            animator.start();
         } else {
             thumb.setX(targetX);
         }
 
         if (currentMode == Mode.RIGHT) {
             thumb.setCardBackgroundColor(rightColor);
-            icon.setImageTintList(ColorStateList.valueOf(Color.BLACK));
+            centerText.setText("RIGHT MODE");
         } else {
             thumb.setCardBackgroundColor(leftColor);
-            icon.setImageTintList(ColorStateList.valueOf(rightColor));
+            centerText.setText("LEFT MODE");
+        }
+
+        if (hapticsEnabled && animate) {
+            performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         }
 
         if (listener != null) {
@@ -138,6 +174,7 @@ public class SwipeModeView extends FrameLayout {
     }
 
     public void setMode(Mode mode) {
+        if (currentMode == mode) return;
         currentMode = mode;
         applyMode(true);
     }
@@ -152,5 +189,9 @@ public class SwipeModeView extends FrameLayout {
 
     private float dp(int value) {
         return value * getResources().getDisplayMetrics().density;
+    }
+
+    public void setHapticsEnabled(boolean enabled) {
+        hapticsEnabled = enabled;
     }
 }

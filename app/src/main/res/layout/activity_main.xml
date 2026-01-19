@@ -18,7 +18,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:leftModeColor="@color/black"
-        app:rightModeColor="#ce4401" />
+        app:rightModeColor="#ce4401"
+        app:hapticsEnabled="true"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
