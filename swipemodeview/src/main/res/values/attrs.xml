@@ -5,5 +5,29 @@
         <attr name="rightModeColor" format="color"/>
         <attr name="centerTextColor" format="color"/>
         <attr name="hapticsEnabled" format="boolean"/>
+        <!-- Initial Mode -->
+        <attr name="mode" format="enum">
+            <enum name="start" value="0"/>
+            <enum name="end" value="1"/>
+        </attr>
+
+        <!-- Orientation -->
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+
+        <!-- Icons -->
+        <attr name="startIcon" format="reference"/>
+        <attr name="endIcon" format="reference"/>
+
+        <!-- Swipe -->
+        <attr name="swipeEnabled" format="boolean"/>
+
+        <!-- Animation -->
+        <attr name="animationDuration" format="integer"/>
+
+        <!--Thumb Size-->
+        <attr name="thumbSize" format="dimension"/>
     </declare-styleable>
 </resources>

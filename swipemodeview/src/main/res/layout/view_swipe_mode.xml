@@ -1,34 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/swipeTrack"
     android:layout_width="match_parent"
     android:layout_height="56dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg_swipe_switch">
+    android:background="@drawable/bg_swipe_switch"
+    android:padding="5dp"
+    android:clickable="true"
+    android:focusable="true">
 
     <TextView
         android:id="@+id/swipeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="MODE"
+        android:text="BATTERY MODE"
         android:textAllCaps="true"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        android:textColor="@android:color/black" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/swipeThumb"
         android:layout_width="46dp"
         android:layout_height="46dp"
         android:layout_gravity="start|center_vertical"
-        android:layout_marginStart="5dp"
         app:cardCornerRadius="23dp"
-        app:cardElevation="4dp">
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="@android:color/black">
 
         <ImageView
             android:id="@+id/swipeIcon"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            app:tint="@android:color/white"/>
     </com.google.android.material.card.MaterialCardView>
 
 </FrameLayout>

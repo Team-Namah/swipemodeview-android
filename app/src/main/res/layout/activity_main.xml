@@ -10,8 +10,9 @@
 
     <com.namah.swipemodeview.SwipeModeView
         android:id="@+id/swipeView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.7"
         app:centerTextColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,7 +20,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:leftModeColor="@color/black"
         app:rightModeColor="#ce4401"
-        app:hapticsEnabled="true"/>
+        app:hapticsEnabled="true"
+        app:orientation="horizontal"
+        app:animationDuration="250"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

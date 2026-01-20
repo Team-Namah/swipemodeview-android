@@ -34,5 +34,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+// Programmatic control
+//        swipeModeView.setSwipeEnabled(true);
+//        swipeModeView.setMode(SwipeModeView.MODE_END);
+
+
     }
 }
