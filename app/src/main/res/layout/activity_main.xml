@@ -5,8 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
+    tools:context=".MainActivity"
+    android:background="#818181">
 
     <com.namah.swipemodeview.SwipeModeView
         android:id="@+id/swipeView"
@@ -22,7 +22,8 @@
         app:rightModeColor="#ce4401"
         app:hapticsEnabled="true"
         app:orientation="horizontal"
-        app:animationDuration="250"/>
-
+        app:animationDuration="250"
+        app:startIcon="@drawable/ic_arrow_right"
+        app:endIcon="@drawable/ic_arrow_left"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

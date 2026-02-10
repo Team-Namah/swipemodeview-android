@@ -79,7 +79,7 @@ public class SwipeModeView extends FrameLayout {
                 .setDuration(200)
                 .start();
 
-        text.setText(currentMode == MODE_START ? "BATTERY MODE" : "ENGINE MODE");
+        text.setText(currentMode == MODE_START ? "ACTIVE MODE" : "INACTIVE MODE");
         icon.setImageResource(currentMode == MODE_START ? startIcon : endIcon);
     }
 
