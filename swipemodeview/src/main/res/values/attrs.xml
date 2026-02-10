@@ -4,7 +4,9 @@
         <attr name="leftModeColor" format="color"/>
         <attr name="rightModeColor" format="color"/>
         <attr name="centerTextColor" format="color"/>
+        <attr name="thumbColor" format="color"/>
         <attr name="hapticsEnabled" format="boolean"/>
+        
         <!-- Initial Mode -->
         <attr name="mode" format="enum">
             <enum name="start" value="0"/>
@@ -20,6 +22,10 @@
         <!-- Icons -->
         <attr name="startIcon" format="reference"/>
         <attr name="endIcon" format="reference"/>
+        
+        <!-- Text -->
+        <attr name="startText" format="string"/>
+        <attr name="endText" format="string"/>
 
         <!-- Swipe -->
         <attr name="swipeEnabled" format="boolean"/>

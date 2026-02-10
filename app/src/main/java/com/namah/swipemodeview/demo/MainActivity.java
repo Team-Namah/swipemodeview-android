@@ -27,10 +27,10 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) SwipeModeView swipeModeView = findViewById(R.id.swipeView);
 
         swipeModeView.setOnModeChangeListener(mode -> {
-            if (mode == SwipeModeView.Mode.LEFT) {
-                // Left mode active
+            if (mode == SwipeModeView.Mode.START) {
+                // Start mode active
             } else {
-                // Right mode active
+                // End mode active
             }
         });
 
